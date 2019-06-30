@@ -1,7 +1,11 @@
 import { HOME_PAGE } from '../actions/homePage'
 
+import { statusMessages } from '../constants'
+
+const { PENDING } = statusMessages
+
 const defaultState = {
-  status: 'UNINIT',
+  status: PENDING,
   homePage: ''
 }
 

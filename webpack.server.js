@@ -1,6 +1,4 @@
 const path = require('path')
-const merge = require('webpack-merge')
-const baseConfig = require('./webpack.base.js')
 const webpackNodeExternals = require('webpack-node-externals')
 
 const config = {
@@ -10,7 +8,28 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build')
   },
-  externals: [webpackNodeExternals()]
+  externals: [webpackNodeExternals()],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+        query: {
+          plugins: [
+            "@babel/plugin-proposal-class-properties",
+            "@babel/plugin-syntax-dynamic-import",
+            "@babel/plugin-proposal-object-rest-spread",
+            ["@babel/plugin-proposal-decorators", { legacy: true }]
+          ]
+        }
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        loader: 'css-loader'
+      }
+    ]
+  }
 }
 
-module.exports = merge(baseConfig, config)
+module.exports = config
