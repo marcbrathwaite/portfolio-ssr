@@ -4,12 +4,22 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 
 import { resetSectionId } from "../../actions/sectionId";
+
 import Header from "./HeaderSection";
 import About from "./AboutSection";
 import Projects from "./ProjectSection";
 import Skills from "./SkillsSection";
 import Contact from "./ContactSection";
 import Footer from "./FooterSection";
+
+import { sectionIds } from '../../constants'
+
+const {
+  aboutId,
+  workId,
+  skillsId,
+  contactId
+} = sectionIds
 
 const AboutSection = styled.section`
   padding-top: 50px;
@@ -104,10 +114,10 @@ class HomePage extends Component {
     this.skillsRef = React.createRef();
     this.contactRef = React.createRef();
     this.sectionMapping = {
-      "#about": this.aboutRef,
-      "#work": this.projectRef,
-      "#skills": this.skillsRef,
-      "#contact": this.contactRef
+      [aboutId]: this.aboutRef,
+      [workId]: this.projectRef,
+      [skillsId]: this.skillsRef,
+      [contactId]: this.contactRef
     };
   }
 

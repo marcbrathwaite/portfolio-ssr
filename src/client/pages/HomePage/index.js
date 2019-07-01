@@ -14,9 +14,16 @@ import { getHomePage, getHomePageStatus } from '../../reducers/pageContentReduce
 import { getSelectedSectionId } from '../../reducers/sectionIdReducer'
 
 // Constants
-import { statusMessages } from '../../constants'
+import { statusMessages, sectionIds } from '../../constants'
 
 const { SUCCESS, FAILURE } = statusMessages
+
+const {
+  aboutId,
+  workId,
+  skillsId,
+  contactId
+} = sectionIds
 
 class HomePage extends Component {
 
@@ -27,19 +34,19 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    const { pageStatus, getHomePageContent,   } = this.props
+    const { pageStatus, getHomePageContent, setSectionId } = this.props
     if (pageStatus === FAILURE) {
       getHomePageContent()
     }
     if (pageStatus === SUCCESS) {
       if (window && this.isSection(window.location.hash)) {
-        this.setSectionId(window.location.hash)
+        setSectionId(window.location.hash)
       }
     }
   }
 
   isSection(section){
-    return section === '#about' || section === '#work' || section === '#skills' || section === '#contact'
+    return section === aboutId || section === workId || section === skillsId || section === contactId
   }
 
   renderPage() {
