@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
 import Wrapper from '../../Common/Wrapper'
 import Heading from '../../Common/typography/Heading'
 import Paragraph from '../../Common/typography/Paragraph'
+
+import media from '../../../utils/screenSizeHelper'
 
 const Container = styled(Wrapper)`
   position: relative;
@@ -13,6 +16,10 @@ const Container = styled(Wrapper)`
 const ColumnWrapper = styled.div`
   display: flex;
   width: 100%;
+  ${media.lg`
+    flex-direction: column;
+    align-items: center;
+  `}
 `
 
 const ImgComtainer = styled.div`
@@ -20,6 +27,12 @@ const ImgComtainer = styled.div`
   height: 400px;
   box-shadow: 10px 10px #36454F;
   margin-right: 55px;
+  ${media.lg`
+  margin-right: 0;
+    margin-bottom: 30px;
+    width: 250px;
+    height: 350px;
+  `}
 `
 
 const ProfileImage = styled.img`
@@ -40,6 +53,9 @@ const Text = styled(Paragraph)`
   :last-of-type {
     margin-bottom: 0;
   }
+  ${media.md`
+    text-align: center;
+  `}
 `
 
 const About = ({ content }) => {

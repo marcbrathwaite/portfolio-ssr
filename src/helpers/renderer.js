@@ -38,8 +38,9 @@ export default (req, store, context) => {
     <html lang="en">
         <head>
         <meta charset="utf-8" />
-        ${helmet.title.toString()}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        ${helmet.title.toString()}
         ${styles}
         <link
         href="https://fonts.googleapis.com/css?family=Cabin|Roboto:700"

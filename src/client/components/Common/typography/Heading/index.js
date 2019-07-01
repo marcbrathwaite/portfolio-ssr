@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import media from '../../../../utils/screenSizeHelper'
+
 
 const Heading1 = styled.div`
   font-family: 'Roboto', sans-serif;
@@ -9,6 +11,9 @@ const Heading1 = styled.div`
   font-size: 6.5rem;
   line-height: 1.6;
   color: ${props => props.invert ? 'black' : '#f1f1f1'};
+  ${media.sm`
+    font-size: 5rem;
+  `}
 `
 
 const Heading2 = styled.div`
@@ -31,6 +36,9 @@ const Heading2 = styled.div`
     transform: translateX(-50%);
     border-bottom: 5px solid #2EC4B6;
   }
+  ${media.sm`
+    font-size: 4.5rem;
+  `}
 `
 
 const Heading3 = styled.div`

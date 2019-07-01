@@ -1,9 +1,12 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
 import Wrapper from '../../Common/Wrapper'
 import Heading from '../../Common/typography/Heading'
 import Paragraph from '../../Common/typography/Paragraph'
+
+import media from '../../../utils/screenSizeHelper'
 
 const Container = styled(Wrapper)`
   position: relative;
@@ -29,6 +32,12 @@ const EmailLink = styled.a`
   :active {
       color: white;
   }
+  ${media.md`
+    font-size: 1.8rem;
+  `}
+  ${media.sm`
+    letter-spacing: 1px;
+  `}
 `
 
 const SocialList = styled.ul`

@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
+import Skill from '../SkillContainer'
+
 import Wrapper from '../../Common/Wrapper'
 import Heading from '../../Common/typography/Heading'
-import Skill from '../SkillContainer'
+
+import media from '../../../utils/screenSizeHelper'
 
 const Container = styled(Wrapper)`
   position: relative;
@@ -23,6 +27,12 @@ const SkillItem = styled.li`
   :nth-of-type(n+5) {
     margin-top: 50px;
   }
+  ${media.sm`
+    flex: 1 0 33.33%;
+    &:nth-of-type(n+4) {
+        margin-top: 50px;
+    }
+  `}
 `
 
 const Skills = ({ content }) => {

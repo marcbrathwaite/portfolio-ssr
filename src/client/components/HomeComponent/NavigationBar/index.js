@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux';
+
 import { setSectionId } from '../../../actions/sectionId'
+
+import media from '../../../utils/screenSizeHelper'
 
 const NavBar = styled.nav`
   display: flex;
@@ -25,6 +28,15 @@ const NavList = styled.ul`
   align-items: center;
   justify-content: space-between;
   padding: 10px 0;
+  ${media.md`
+    flex-direction: column;
+    & li {
+      margin-bottom: 30px;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  `}
 `
 
 const NavLink = styled.a`

@@ -1,11 +1,14 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import reactStringReplace from 'react-string-replace'
+
 import Wrapper from '../../Common/Wrapper'
 import Heading from '../../Common/typography/Heading'
 import Paragraph from '../../Common/typography/Paragraph'
-import reactStringReplace from 'react-string-replace'
+
 import { collabMapping } from '../../../constants'
+import media from '../../../utils/screenSizeHelper'
 
 
 const Container = styled(Wrapper)`
@@ -23,6 +26,19 @@ const ProjectContainer = styled.div`
   :last-of-type {
       margin-bottom: 0;
   }
+  ${media.lg`
+    flex-direction: ${(props) => props.isLeftAlign ? 'column' : 'column-reverse'};
+    align-items: center;
+  `}
+`
+
+const ProjectImageContainer = styled.div`
+  flex: 1 0 calc(30% - 30px);
+  margin-right: ${(props) => props.isLeftAlign ? '60px' : '0px'};
+  ${media.lg`
+    margin-bottom: 25px;
+    margin-right: 0;
+  `}
 `
 
 const ProjectDescContainer = styled.div`
@@ -31,11 +47,11 @@ const ProjectDescContainer = styled.div`
   flex-direction: column;
   margin-right: ${(props) => !props.isLeftAlign ? '60px' : '0'};
   text-align: ${(props) => !props.isLeftAlign ? 'right' : 'left'};
-`
-
-const ProjectImageContainer = styled.div`
-  flex: 1 0 calc(30% - 30px);
-  margin-right: ${(props) => props.isLeftAlign ? '60px' : '0px'};
+  ${media.lg`
+    width: 100%;
+    text-align: left;
+    margin: 0;
+  `}
 `
 
 const ProjectDesc = styled(Paragraph)`
@@ -48,6 +64,10 @@ const ProjectTechContainer = styled(Paragraph)`
   flex-wrap: wrap;
   align-self: ${(props) => props.isLeftAlign ? 'auto' : 'flex-end'};
   justify-content: ${(props) => props.isLeftAlign ? 'auto' : 'flex-end'};
+  ${media.lg`
+    align-self: ${(props) => props.isLeftAlign ? 'auto' : 'flex-start'};
+    justify-content: ${(props) => props.isLeftAlign ? 'auto' : 'flex-start'};
+  `}
 `
 
 const ProjectTech = styled.span`
@@ -60,7 +80,10 @@ const ProjectTech = styled.span`
   :last-of-type {
     margin-right: 0;
   }
-}
+  ${media.lg`
+    margin-right: 10px;
+    margin-left: 0;
+  `}
 `
 const CollabLink = styled.a`
   color: black;
@@ -69,6 +92,9 @@ const CollabLink = styled.a`
 const ButtonContainer = styled.div`
   display: flex;
   align-self: ${(props) => props.isLeftAlign ? 'auto' : 'flex-end'};
+  ${media.lg`
+  align-self: ${(props) => props.isLeftAlign ? 'auto' : 'flex-start'};
+  `}
 `
 
 const Button = styled.a`
@@ -91,6 +117,9 @@ const Button = styled.a`
       background: white;
       color: #242582;
   }
+  ${media.sm`
+    padding: 8px 10px;
+  `}
 `
 
 const Projects = ({ content }) => {
@@ -123,7 +152,10 @@ const Projects = ({ content }) => {
           } = project
           const isLeftAlign = index % 2 === 0
           return (
-            <ProjectContainer key={id}>
+            <ProjectContainer
+              key={id}
+              isLeftAlign={isLeftAlign}
+            >
               {
                 isLeftAlign
                   ?
