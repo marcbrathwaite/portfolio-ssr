@@ -8,7 +8,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import { renderRoutes } from "react-router-config";
 
-import routes from "./routes";
+import routes from "./routes1";
 import reducers from './reducers'
 
 //Hook up redux dev tools
