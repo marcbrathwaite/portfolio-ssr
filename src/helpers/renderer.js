@@ -9,7 +9,7 @@ import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 // up script tags i.e. use to protect against xss attacks
 import serialize from "serialize-javascript";
 
-import routes from "../client/routes1";
+import routes from "../client/routes";
 
 export default (req, store, context) => {
   const { path } = req;

@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime";
 import express from 'express'
 import { matchRoutes } from 'react-router-config'
 
-import routes from './client/routes1'
+import routes from './client/routes'
 
 // Helper to create redux store
 import createStore from './helpers/createStore'
